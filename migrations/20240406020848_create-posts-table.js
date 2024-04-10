@@ -7,7 +7,7 @@ exports.up = function(knex) {
         .createTable("posts", (table) => {
             table.increments("id").primary();
             table.integer("user_id").unsigned().notNullable();
-            table.string("movie_title").notNullable();
+            table.integer("movie_id").unsigned().notNullable();
             table.string("title").notNullable();
             table.string("content", 1000).notNullable();
             table.integer("likes").notNullable().defaultTo(0);
