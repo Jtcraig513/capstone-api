@@ -10,6 +10,7 @@ exports.up = function(knex) {
             table.integer("movie_id").unsigned().notNullable();
             table.string("title", 50).notNullable();
             table.string("poster").notNullable();
+            table.boolean("removed").notNullable().defaultTo(false);
             table.timestamp("created_at").defaultTo(knex.fn.now());
             table
                 .timestamp("updated_at")

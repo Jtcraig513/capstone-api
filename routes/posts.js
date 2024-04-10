@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   knex
     .select(
       'posts.id as post_id',
-      'posts.movie_id as movie_id',
+      'posts.movie_id',
       'posts.title',
       'posts.content',
       'posts.updated_at',
@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
   knex('posts')
     .insert({
       user_id: req.user.id,
-      movie_id: req.movie_id,
+      movie_id: req.body.movie_id,
       title: req.body.title,
       content: req.body.content,
     })
