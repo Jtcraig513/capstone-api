@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
   
     // Validate request body for required fields
     if (!req.body.movie_id || !req.body.title || !req.body.poster) {
+      console.log(req.body);
       return res
         .status(400)
         .json({ message: 'Missing movie id, title or poster fields' });

@@ -3,7 +3,8 @@ const router = express.Router();
 const knex = require('knex')(require('../knexfile.js'));
 
 // Get all posts route
-router.get('/', (req, res) => {
+router.get('/:movieId', (req, res) => {
+  const movieId = req.params.movieId;
   // Select post and user fields by using a join between posts and users tables and order them chronologically, newest first
   knex
     .select(
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
       'users.username'
     )
     .from('posts')
+    .where({movie_id: movieId})
     .leftJoin('users', 'posts.user_id', 'users.id')
     .orderBy('posts.id', 'desc')
     .then((posts) => {
