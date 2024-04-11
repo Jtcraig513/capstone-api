@@ -37,7 +37,6 @@ router.post('/', (req, res) => {
   
     // Validate request body for required fields
     if (!req.body.movie_id || !req.body.title || !req.body.poster) {
-      console.log(req.body);
       return res
         .status(400)
         .json({ message: 'Missing movie id, title or poster fields' });
@@ -74,7 +73,6 @@ router.put('/:id', (req, res) => {
       removed: req.body.removed
   })
   .then((updatedCount) => {
-    console.log(updatedCount);
       if (updatedCount === 0) {
           return res.status(404).json({ message: 'Collection not found or unauthorized' });
       }
