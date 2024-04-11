@@ -73,7 +73,6 @@ router.put('/:id', (req, res) => {
       removed: req.body.removed
   })
   .then((updatedCount) => {
-    console.log(updatedCount);
       if (updatedCount === 0) {
           return res.status(404).json({ message: 'Collection not found or unauthorized' });
       }
