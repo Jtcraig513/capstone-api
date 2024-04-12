@@ -12,7 +12,7 @@ exports.seed = function (knex) {
     .then(() => {
       // Then create a mock user (so we have more than one account for testing posts)
       return knex('users').insert({
-        github_id: 117824289603154359924,
+        google_id: 117824289603154359924,
         avatar_url: 'https://avatars.githubusercontent.com/u/92953487?v=4',
         username: 'dummy-user',
       });
