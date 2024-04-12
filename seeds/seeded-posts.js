@@ -6,6 +6,18 @@ exports.seed = function (knex) {
   return knex('posts')
     .del()
     .then(() => {
+      // Next delete a mock user
+      return knex('users').del().where({ username: 'dummy-user' });
+    })
+    .then(() => {
+      // Then create a mock user (so we have more than one account for testing posts)
+      return knex('users').insert({
+        github_id: 117824289603154359924,
+        avatar_url: 'https://avatars.githubusercontent.com/u/92953487?v=4',
+        username: 'dummy-user',
+      });
+    })
+    .then(() => {
       // Get all user ids from users table
       return knex('users').select('id');
     })
